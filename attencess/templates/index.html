@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AttendEase | Premium Attendance Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <meta name="description" content="A state-of-the-art attendance tracking system with glassmorphism design.">
+</head>
+<body>
+    <div class="background-blob"></div>
+    <div class="background-blob-2"></div>
+    
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-clock"></i>
+                <h1>Attend<span>Ease</span></h1>
+            </div>
+            <div class="live-clock" id="clock">00:00:00</div>
+        </header>
+
+        <main>
+            <section class="ops-panel">
+                <div class="card glass">
+                    <h2>Check In / Out</h2>
+                    <p>Enter your ID to record your attendance</p>
+                    <div class="input-group">
+                        <input type="text" id="employee-id" placeholder="Employee ID" autocomplete="off">
+                        <input type="text" id="employee-name" placeholder="Full Name (For Check-in)" autocomplete="off">
+                    </div>
+                    <div class="button-group">
+                        <button id="btn-check-in" class="btn btn-primary">
+                            <i class="fas fa-sign-in-alt"></i> Check In
+                        </button>
+                        <button id="btn-check-out" class="btn btn-secondary">
+                            <i class="fas fa-sign-out-alt"></i> Check Out
+                        </button>
+                    </div>
+                    <div id="status-message" class="status-message"></div>
+                </div>
+
+                <div class="card glass stats">
+                    <h3>Today's Stats</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-value" id="present-count">0</span>
+                            <span class="stat-label">Present</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" id="active-count">0</span>
+                            <span class="stat-label">Currently In</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="history-panel">
+                <div class="card glass history-card">
+                    <div class="card-header">
+                        <h2>Recent Activity</h2>
+                        <button id="refresh-btn" class="btn-icon"><i class="fas fa-sync-alt"></i></button>
+                    </div>
+                    <div class="table-container">
+                        <table id="history-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>ID</th>
+                                    <th>Check In</th>
+                                    <th>Check Out</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="history-body">
+                                <!-- Data will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
