@@ -84,5 +84,36 @@ def check_out():
     
     return jsonify({'status': 'error', 'message': 'No active check-in session found for this ID.'}), 404
 
+@app.route('/api/salary/<employee_id>', methods=['GET'])
+def get_salary(employee_id):
+    records = Attendance.query.filter_by(employee_id=employee_id).all()
+    
+    total_hours = 0
+    work_days = 0
+    
+    # Calculation Settings
+    MONTHLY_SALARY = 12000
+    DAILY_REQUIRED_HOURS = 9  # 9.00am to 6.00pm
+    DAYS_IN_MONTH = 30
+    DAILY_RATE = MONTHLY_SALARY / DAYS_IN_MONTH
+    HOURLY_RATE = DAILY_RATE / DAILY_REQUIRED_HOURS
+
+    for record in records:
+        if record.check_in and record.check_out:
+            duration = (record.check_out - record.check_in).total_seconds() / 3600
+            total_hours += duration
+            work_days += 1
+    
+    earned_salary = total_hours * HOURLY_RATE
+    
+    return jsonify({
+        'employee_id': employee_id,
+        'total_hours': round(total_hours, 2),
+        'work_days': work_days,
+        'monthly_base': MONTHLY_SALARY,
+        'earned_salary': round(earned_salary, 2),
+        'currency': 'RS'
+    })
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
