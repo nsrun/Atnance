@@ -92,7 +92,7 @@ def get_salary(employee_id):
     work_days = 0
     
     # Calculation Settings
-    MONTHLY_SALARY = 12000
+    MONTHLY_SALARY = 25000
     DAILY_REQUIRED_HOURS = 9  # 9.00am to 6.00pm
     DAYS_IN_MONTH = 30
     DAILY_RATE = MONTHLY_SALARY / DAYS_IN_MONTH
