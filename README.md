@@ -1,4 +1,4 @@
-# AttendEase | Premium Attendance Management System
+### AttendEase | Premium Attendance Management System
 
 AttendEase is a state-of-the-art, web-based attendance tracking system designed with a modern, glassmorphic interface. It provides an intuitive platform for employees to check in and out, while allowing administrators to track daily logs in real-time.
 
@@ -75,5 +75,4 @@ attencess/
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
----
-Designed with ❤️ by [Your Name]
+
